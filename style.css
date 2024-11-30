@@ -283,7 +283,6 @@ body {
 }
   
   /* About Us Section */
-/* About Us Section */
 #about-us {
     background-color: #f4f4f4;
     padding: 80px 20px;
@@ -381,13 +380,14 @@ body {
 }
 
 /* Responsive design for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     #about-us h2 {
-        font-size: 2rem;
+        font-size: 2.5rem; /* Reduce header font size */
     }
 
     .about-text {
-        font-size: 1rem;
+        font-size: 1.1rem; /* Adjust text size for readability */
+        width: 90%; /* Allow text to wrap more smoothly */
     }
 
     .about-container {
@@ -395,9 +395,48 @@ body {
     }
 
     .about-content {
-        text-align: center; /* Center text for mobile */
+        text-align: center; /* Center text for tablets */
     }
 }
+
+@media (max-width: 768px) {
+    #about-us h2 {
+        font-size: 2rem; /* Further reduce font size on smaller screens */
+        margin-bottom: 20px; /* Adjust header margin */
+    }
+
+    .about-text {
+        font-size: 1rem; /* Adjust text size */
+        width: 100%; /* Ensure text takes full width */
+        white-space: normal; /* Allow text to wrap */
+        margin-top: 15px; /* Decrease top margin */
+    }
+
+    .about-container {
+        width: 95%; /* Increase container width on mobile */
+    }
+
+    .about-content {
+        text-align: center; /* Center text on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #about-us h2 {
+        font-size: 1.8rem; /* Make header smaller on very small screens */
+    }
+
+    .about-text {
+        font-size: 0.9rem; /* Further adjust font size */
+        width: 100%;
+        margin-top: 10px; /* Less margin between text */
+    }
+
+    .about-container {
+        width: 100%; /* Ensure container takes full width */
+    }
+}
+
 
   /* Contact Section */
 /* Contact Section */
