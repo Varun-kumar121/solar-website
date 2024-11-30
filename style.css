@@ -283,7 +283,7 @@ body {
 }
   
   /* About Us Section */
-#about-us {
+  #about-us {
     background-color: #f4f4f4;
     padding: 80px 20px;
     text-align: center;
@@ -300,7 +300,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    animation: fadeIn 1s ease-out;
+    animation: fadeInHeader 1s ease-out;
 }
 
 /* About Us content container */
@@ -317,58 +317,47 @@ body {
     padding-top: 20px;
 }
 
-/* Typing animation for text */
+/* New animation for about-text */
 .about-text {
     font-size: 1.25rem;
     color: #555;
     margin-top: 20px;
-    display: inline-block; /* Ensures text behaves like a single word */
-    width: 0; /* Start with width 0 for animation */
-    white-space: nowrap;
-    border-right: 4px solid #333; /* Cursor effect */
-    overflow: hidden; /* Hide the text */
-    animation: typing 5s steps(50) 1s forwards, blink 0.75s step-end infinite; /* Typing and blinking cursor */
+    opacity: 0; /* Initially hide text */
+    transform: translateY(20px); /* Start position below */
+    animation: fadeInUp 1s ease-out forwards;
 }
 
-/* Delays for each paragraph to make them type one after the other */
+/* Delays for each paragraph to make them appear one after the other */
 .about-text:nth-child(1) {
-    animation-delay: 0s;
+    animation-delay: 0.5s;
 }
 
 .about-text:nth-child(2) {
-    animation-delay: 6s; /* Delay for second paragraph */
+    animation-delay: 1s; /* Delay for second paragraph */
 }
 
 .about-text:nth-child(3) {
-    animation-delay: 12s; /* Delay for third paragraph */
+    animation-delay: 1.5s; /* Delay for third paragraph */
 }
 
 .about-text:nth-child(4) {
-    animation-delay: 18s; /* Delay for fourth paragraph */
+    animation-delay: 2s; /* Delay for fourth paragraph */
 }
 
-/* Typing animation */
-@keyframes typing {
+/* Fade-in and slide-up animation */
+@keyframes fadeInUp {
     0% {
-        width: 0;
+        opacity: 0;
+        transform: translateY(20px);
     }
     100% {
-        width: 100%;
-    }
-}
-
-/* Blinking cursor animation */
-@keyframes blink {
-    0%, 50% {
-        border-color: transparent;
-    }
-    50.1%, 100% {
-        border-color: #333;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 /* Fade-in animation for header */
-@keyframes fadeIn {
+@keyframes fadeInHeader {
     0% {
         opacity: 0;
         transform: translateY(-20px);
@@ -380,14 +369,13 @@ body {
 }
 
 /* Responsive design for smaller screens */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     #about-us h2 {
-        font-size: 2.5rem; /* Reduce header font size */
+        font-size: 2rem;
     }
 
     .about-text {
-        font-size: 1.1rem; /* Adjust text size for readability */
-        width: 90%; /* Allow text to wrap more smoothly */
+        font-size: 1rem;
     }
 
     .about-container {
@@ -395,45 +383,7 @@ body {
     }
 
     .about-content {
-        text-align: center; /* Center text for tablets */
-    }
-}
-
-@media (max-width: 768px) {
-    #about-us h2 {
-        font-size: 2rem; /* Further reduce font size on smaller screens */
-        margin-bottom: 20px; /* Adjust header margin */
-    }
-
-    .about-text {
-        font-size: 1rem; /* Adjust text size */
-        width: 100%; /* Ensure text takes full width */
-        white-space: normal; /* Allow text to wrap */
-        margin-top: 15px; /* Decrease top margin */
-    }
-
-    .about-container {
-        width: 95%; /* Increase container width on mobile */
-    }
-
-    .about-content {
-        text-align: center; /* Center text on small screens */
-    }
-}
-
-@media (max-width: 480px) {
-    #about-us h2 {
-        font-size: 1.8rem; /* Make header smaller on very small screens */
-    }
-
-    .about-text {
-        font-size: 0.9rem; /* Further adjust font size */
-        width: 100%;
-        margin-top: 10px; /* Less margin between text */
-    }
-
-    .about-container {
-        width: 100%; /* Ensure container takes full width */
+        text-align: center; /* Center text for mobile */
     }
 }
 
