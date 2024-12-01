@@ -1,51 +1,55 @@
-// Check when elements come into view and add the "visible" class
+// Check when service items come into view and add the "visible" class
 window.addEventListener('scroll', function () {
-    const serviceItems = document.querySelectorAll('.service-item');
-    const windowHeight = window.innerHeight;
+  const serviceItems = document.querySelectorAll('.service-item');
+  const windowHeight = window.innerHeight;
 
-    serviceItems.forEach(item => {
-        const itemTop = item.getBoundingClientRect().top;
+  serviceItems.forEach(item => {
+      const itemTop = item.getBoundingClientRect().top;
 
-        if (itemTop <= windowHeight * 0.8) { // When the item is 80% into the viewport
-            item.classList.add('visible');
-        } else {
-            item.classList.remove('visible');
-        }
-    });
+      if (itemTop <= windowHeight * 0.8) { // Item is 80% into the viewport
+          item.classList.add('visible'); // Add "visible" class for animation
+      } else {
+          item.classList.remove('visible'); // Remove "visible" class when out of view
+      }
+  });
 });
 
-// Intersection Observer to trigger animation on scroll
-document.addEventListener("DOMContentLoaded", function() {
-    const elements = document.querySelectorAll('.about-text');
-  
-    const observerOptions = {
-      root: null, // use the viewport as the root
-      threshold: 0.5, // trigger when 50% of the element is in view
-    };
-  
-    const observerCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible'); // Trigger animation by adding 'visible'
-          observer.unobserve(entry.target); // Stop observing once animation is triggered
-        }
-      });
-    };
-  
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-  
-    // Observe each element
-    elements.forEach(element => observer.observe(element));
-  });  
+// Intersection Observer to trigger animation on scroll for "about-text" elements
+document.addEventListener("DOMContentLoaded", function () {
+  const aboutTextElements = document.querySelectorAll('.about-text');
 
-// Optional JS for any additional functionality or smooth scrolling
-document.querySelectorAll('a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+  // Observer options
+  const observerOptions = {
+      root: null, // Use the viewport as the root
+      threshold: 0.5 // Trigger when 50% of the element is in view
+  };
+
+  // Observer callback function
+  const observerCallback = (entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible'); // Trigger animation
+              observer.unobserve(entry.target); // Stop observing after animation
+          }
       });
-    });
+  };
+
+  // Initialize Intersection Observer
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  // Observe each "about-text" element
+  aboutTextElements.forEach(element => observer.observe(element));
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default anchor click behavior
+
+      // Scroll to the target section smoothly
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth', // Smooth scrolling
+          block: 'start' // Align target to the top of the viewport
+      });
   });
-  
+});

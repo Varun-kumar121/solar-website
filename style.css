@@ -37,7 +37,7 @@ a {
 
 /* Navbar */
 header {
-    background-color: #333;
+    background-color: #000000;
     color: white;
     position: fixed;
     top: 0;
@@ -59,9 +59,9 @@ header .logo {
 }
 
 header .logo img {
-    width: 50px;
+    width: 100px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 0%;
     object-fit: cover;
 }
 
@@ -104,8 +104,8 @@ body {
 /* Hero Section with Video Background */
 .hero {
     position: relative;
-    height: 80vh;
-    color: white;
+    height: 90vh;
+    color: #000000;
     text-align: center;
     animation: fadeIn 2s ease-in-out;
 }
